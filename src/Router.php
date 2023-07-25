@@ -48,7 +48,7 @@ class Router
      *	    по которой можно определить вызываемый контроллер (класс) и его действие (метод)
      * @throws SmvcRoutingException
      */
-    public function callControllerAction(string $route, ?string $status=null): object
+    public function callControllerAction(string $route, mixed $status=null): object
     {
         $controllerName = $this->getControllerClassName($route);
         
@@ -143,7 +143,6 @@ class Router
     
     /**
      * Возвращает путь до файла контроллера относительно корневой дирректории
-     * @param string $controllerName
      */
     private function getControllerFileName(string $controllerName): string
     {
