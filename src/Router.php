@@ -48,7 +48,7 @@ class Router
      *	    по которой можно определить вызываемый контроллер (класс) и его действие (метод)
      * @throws SmvcRoutingException
      */
-    public function callControllerAction(string $route, mixed $status=null): object
+    public function callControllerAction(string $route, mixed $data=null): object
     {
         $controllerName = $this->getControllerClassName($route);
         
@@ -71,8 +71,8 @@ class Router
                         . " [$methodName] для данного действия [$actionName] не найден.");
             }
 
-            if($status !== null) {
-                $controller->$methodName($status); // вызываем действие контроллера
+            if($data !== null) {
+                $controller->$methodName($data); // вызываем действие контроллера
             } else {
                 $controller->$methodName();
             }
