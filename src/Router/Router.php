@@ -5,8 +5,8 @@ use ItForFree\SimpleMVC\exceptions\SmvcRoutingException;
 use ItForFree\SimpleMVC\exceptions\SmvcAccessException;
 
 /**
- * Класс-маршрутизатор, его задача по переданной строке (предположительно это какой-то адресе на сайте),
- * определить какой контролеер и какое действие надо вызывать.
+ * Класс-маршрутизатор, его задача по переданной строке,
+ * определить какой контроллер и какое действие надо вызывать.
  */
 
 abstract class Router
