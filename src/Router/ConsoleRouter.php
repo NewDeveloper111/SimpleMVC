@@ -12,7 +12,7 @@ class ConsoleRouter extends Router
     public static function getRoute(): string 
     {
 	global $argv;
-	$getValue = $argv[1] . '/' . ($argv[2] ?? 'index');
+	$getValue = $argv[1] . '/' . ($argv[2] ?? '');
 	return $getValue;
     }
 
