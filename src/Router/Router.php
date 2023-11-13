@@ -23,17 +23,14 @@ abstract class Router
    
    
    /**
-    * Вернёт объект юзера
+    * Вернёт объект юзера 
     * 
-    * @staticvar Router $instance
+    * @todo Оставлено для обратной совместимости, уходим от паттерна "одиночка",
+    * в дальнейшем лучше перейти на использование обычного конструктора   
     */
     public static function get(): Router
     {
-        static $instance = null; // статическая переменная
-        if (null === $instance) { // проверка существования
-            $instance = new static();
-        }
-        return $instance;
+        return new static();
     }
     
     /** 

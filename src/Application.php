@@ -92,9 +92,15 @@ class Application
      * 
      * @param  array $config многомерный массив конфигурации приложения
      */
-    public function setConfiguration(array $config): object
+    public function setConfiguration(array $config, bool $resetContainerCache = true): object
     {
         $this->config = new Dot($config);
+        if ($resetContainerCache) {
+            $this->containerElements = [
+                'elements' => [],
+                'objects' => [],
+            ];
+        }
         return $this;
     }
     

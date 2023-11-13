@@ -4,7 +4,7 @@
  */
 $config = [
     'core' => [ // подмассив используемый самим ядром фреймворка        
-        'consolerouter' => [ // подсистема маршрутизации
+        'router' => [ // подсистема маршрутизации
             'class' => \ItForFree\SimpleMVC\Router\ConsoleRouter::class
         ],
     ]    

@@ -4,7 +4,7 @@
  */
 $config = [
     'core' => [ // подмассив используемый самим ядром фреймворка        
-        'webrouter' => [ // подсистема маршрутизации
+        'router' => [ // подсистема маршрутизации
             'class' => \ItForFree\SimpleMVC\Router\WebRouter::class
         ],
         'mvc' => [ // настройки MVC
@@ -14,14 +14,7 @@ $config = [
             ]
         ],
         'user' => [ // подсистема авторизации
-            'class' => \support\ExampleUser::class,
-	    'construct' => [
-                'session' => '@session'
-             ], 
-        ],
-        'session' => [ // подсистема работы с сессиями
-            'class' => ItForFree\SimpleMVC\Session::class,
-            'alias' => '@session'
+            'class' => \App\ExampleUser::class
         ]
     ]    
 ];

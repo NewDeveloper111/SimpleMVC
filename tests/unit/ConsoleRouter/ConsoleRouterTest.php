@@ -15,16 +15,15 @@ class ConsoleRouterTest extends \Codeception\Test\Unit
         $config = require(codecept_data_dir() . 'console/console-config.php');
         $App = Application::get();
         $App->setConfiguration($config);
-        $Router = $App->getConfigObject('core.consolerouter.class');
+        $Router = $App->getConfigObject('core.router.class');
         $Router->baseControllersNamespace = '\\support\\';
         global $argv, $projectRoot;
         $projectRoot = __DIR__;
         $argv[1] = 'console';
-        unset($argv[2]);        
         $routeOne = $Router::getRoute();
         $Router->callControllerAction($routeOne);
         $I->assertSame($Router->getControllerActionName($routeOne), 'index');
-        $argv[2] = 'new';
+        $argv[1] = 'console:new';
         $routeTwo = $Router::getRoute();
         $Router->callControllerAction($routeTwo);
         $I->assertSame($Router->getControllerActionName($routeTwo), 'new');

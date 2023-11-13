@@ -16,9 +16,9 @@ class WebRouterTest extends \Codeception\Test\Unit
         $config = require(codecept_data_dir() . 'web/web-config.php');
         $App = Application::get();
         $App->setConfiguration($config);
-        $Router = $App->getConfigObject('core.webrouter.class');
+        $Router = $App->getConfigObject('core.router.class');
         $Router->baseControllersNamespace = '\\support\\';        
-        $_SERVER['DOCUMENT_ROOT'] = __DIR__ . '/empty';
+        $_SERVER['DOCUMENT_ROOT'] = __DIR__ . '/support';
         $_GET['route'] = 'web/';
         $routeFirst = $Router::getRoute();
         $Router->callControllerAction($routeFirst);

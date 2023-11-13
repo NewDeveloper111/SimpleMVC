@@ -12,8 +12,8 @@ class ConsoleRouter extends Router
     public static function getRoute(): string 
     {
 	global $argv;
-	$getValue = $argv[1] . '/' . ($argv[2] ?? '');
-	return $getValue;
+        return str_contains($argv[1], ':') ? str_replace(':', '/', $argv[1]) :
+                $argv[1] . '/';
     }
 
     public function callControllerAction(string $route, mixed $data = null): object
