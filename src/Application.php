@@ -3,8 +3,8 @@ namespace ItForFree\SimpleMVC;
 
 use ItForFree\rusphp\PHP\ArrayLib\DotNotation\Dot;
 use ItForFree\SimpleMVC\ExceptionHandler;
-use ItForFree\SimpleMVC\exceptions\SmvcUsageException;
-use ItForFree\SimpleMVC\exceptions\SmvcConfigException;
+use ItForFree\SimpleMVC\Exceptions\SmvcUsageException;
+use ItForFree\SimpleMVC\Exceptions\SmvcConfigException;
 use ItForFree\rusphp\PHP\Object\ObjectFactory;
 use ItForFree\rusphp\PHP\ArrayLib\Structure;
 

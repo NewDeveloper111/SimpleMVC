@@ -1,8 +1,8 @@
 <?php
 namespace ItForFree\SimpleMVC\Router;
 
-use ItForFree\SimpleMVC\exceptions\SmvcRoutingException;
-use ItForFree\SimpleMVC\exceptions\SmvcAccessException;
+use ItForFree\SimpleMVC\Exceptions\SmvcRoutingException;
+use ItForFree\SimpleMVC\Exceptions\SmvcAccessException;
 
 /**
  * Класс-маршрутизатор, его задача по переданной строке,
@@ -130,11 +130,12 @@ abstract class Router
     /**
      * Возвращает путь до файла контроллера относительно корневой дирректории
      */
-    private function getControllerFileName(string $controllerName): string
+    protected function getControllerFileName(string $controllerName): string
     {
+        global $projectRoot;
         $urlFragments = explode('\\', $controllerName);
         $res = implode('/', $urlFragments) . '.php';
-        return $_SERVER['DOCUMENT_ROOT']. '/..'. $res;
+        return $projectRoot ?? ($_SERVER['DOCUMENT_ROOT'] . '/..') . $res;
     }
     
     /**

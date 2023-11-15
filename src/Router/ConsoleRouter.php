@@ -33,13 +33,4 @@ class ConsoleRouter extends Router
         
         return $this;
     }
-    
-    private function getControllerFileName(string $controllerName): string
-    {
-        global $projectRoot;
-	$urlFragments = explode('\\', $controllerName);
-        $res = implode('/', $urlFragments) . '.php';
-	return $projectRoot . $res;
-    }
-
 }
