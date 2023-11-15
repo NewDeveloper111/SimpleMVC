@@ -5,7 +5,6 @@ namespace ItForFree\SimpleMVC\Router;
  * Класс-маршрутизатор, его задача по переданным аргументам в консоли,
  * определить какой контроллер и какое действие надо вызывать.
  */
-
 class ConsoleRouter extends Router
 {
     
@@ -30,19 +29,7 @@ class ConsoleRouter extends Router
         } 
         $controller = new $controllerName();
         $actionName = $this->getControllerActionName($route);
-	
-        $methodName =  $this->getControllerMethodName($actionName);
-            
-        if (!method_exists($controller, $methodName)) {
-            throw new SmvcRoutingException("Метод контроллера ([$controllerName])"
-		    . " [$methodName] для данного действия [$actionName] не найден.");
-        }
-
-        if($data !== null) {
-            $controller->$methodName($data); // вызываем действие контроллера
-        } else {
-            $controller->$methodName();
-        }
+	$this->runControllerAction($actionName, $controllerName, $controller, $data);
         
         return $this;
     }

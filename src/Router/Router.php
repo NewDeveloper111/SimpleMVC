@@ -61,18 +61,7 @@ abstract class Router
         $actionName = $this->getControllerActionName($route);
  
         if ($controller->isEnabled($actionName)) {
-            $methodName =  $this->getControllerMethodName($actionName);
-            
-            if (!method_exists($controller, $methodName)) {
-                throw new SmvcRoutingException("Метод контроллера ([$controllerName])"
-                        . " [$methodName] для данного действия [$actionName] не найден.");
-            }
-
-            if($data !== null) {
-                $controller->$methodName($data); // вызываем действие контроллера
-            } else {
-                $controller->$methodName();
-            }
+            $this->runControllerAction($actionName, $controllerName, $controller, $data);
         } else {
             throw  new SmvcAccessException("Доступ к маршруту $route запрещен.");
         }
@@ -148,6 +137,25 @@ abstract class Router
         return $_SERVER['DOCUMENT_ROOT']. '/..'. $res;
     }
     
+    /**
+     * Выполнить действие контроллера
+     */
+    public function runControllerAction(string $actionName, string $controllerName,
+            object $controller, mixed $data = null): void {
+        $methodName =  $this->getControllerMethodName($actionName);
+            
+        if (!method_exists($controller, $methodName)) {
+            throw new SmvcRoutingException("Метод контроллера ([$controllerName])"
+		    . " [$methodName] для данного действия [$actionName] не найден.");
+        }
+
+        if($data !== null) {
+            $controller->$methodName($data); // вызываем действие контроллера
+        } else {
+            $controller->$methodName();
+        }
+    }
+
     /**
      * Получаем URL
      */
